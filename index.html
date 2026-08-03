@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fahmi Khemiri · Cybersecurity Consultant & Full Stack Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0e17;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #e8edf5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* ----- Premium Ambient Glow ----- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 25% 20%, rgba(56, 189, 248, 0.06) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 55%),
+                #0a0e17;
+        }
+
+        /* ----- Subtle Background Grid ----- */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(56, 189, 248, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* ---------- MAIN CARD ---------- */
+        .card {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(12, 18, 30, 0.72);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 48px;
+            padding: 3.2rem 3.6rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow:
+                0 50px 100px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+
+        @media (max-width: 680px) {
+            .card { padding: 1.8rem 1.4rem; border-radius: 28px; }
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .name-title h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .name-title .sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #94a3b8;
+            letter-spacing: 1.5px;
+            margin-top: 2px;
+            -webkit-text-fill-color: #94a3b8;
+        }
+        .name-title .sub strong {
+            color: #7dd3fc;
+            -webkit-text-fill-color: #7dd3fc;
+        }
+
+        .badge-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.8rem;
+            margin-top: 0.6rem;
+        }
+
+        .badge-cluster span {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.2rem 1.2rem;
+            border-radius: 100px;
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            color: #7dd3fc;
+        }
+
+        .badge-cluster .core-badge {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: #94a3b8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .contact-links a:hover {
+            color: #7dd3fc;
+            border-bottom-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .contact-links .email {
+            color: #e2e8f0;
+        }
+
+        @media (max-width: 700px) {
+            .header { flex-direction: column; gap: 1rem; }
+            .name-title h1 { font-size: 2.4rem; }
+        }
+
+        /* ---------- PROFILE GRID ---------- */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 2.2rem;
+            margin-bottom: 2.8rem;
+        }
+        @media (max-width: 780px) {
+            .profile-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        .profile-text p {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            max-width: 640px;
+            line-height: 1.6;
+        }
+        .profile-text p strong {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+        .highlight-company {
+            color: #7dd3fc;
+            font-weight: 500;
+        }
+
+        .quick-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            align-self: start;
+        }
+
+        .quick-stats .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quick-stats .stat .num {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f8fafc;
+            letter-spacing: -0.02em;
+        }
+
+        .quick-stats .stat .label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .quick-stats .stat .num-gold {
+            color: #fcd34d;
+        }
+
+        /* ---------- SECTION TITLE ---------- */
+        .section-title {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #7dd3fc;
+            margin: 2.6rem 0 1.4rem 0;
+            border-left: 3px solid #7dd3fc;
+            padding-left: 1rem;
+        }
+
+        /* ---------- COMPLETE SKILLS GRID (All CV skills) ---------- */
+        .skills-full-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2rem;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 1.4rem 1.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        @media (max-width: 600px) {
+            .skills-full-grid { grid-template-columns: 1fr; padding: 1rem; }
+        }
+        .skills-full-grid .skill-cat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .skills-full-grid .skill-cat .cat-title {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #7dd3fc;
+            opacity: 0.7;
+            margin-bottom: 0.2rem;
+        }
+        .skills-full-grid .skill-cat .cat-items {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+        .skills-full-grid .skill-cat .cat-items span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.1rem 0.6rem;
+            border-radius: 12px;
+            margin: 0.1rem 0.2rem;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        /* ---------- SKILL BARS (Extended) ---------- */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2.4rem;
+        }
+        @media (max-width: 540px) {
+            .skill-grid { grid-template-columns: 1fr; }
+        }
+
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 4px;
+        }
+        .skill-item .skill-label .perc {
+            color: #7dd3fc;
+            font-weight: 600;
+        }
+        .skill-track {
+            width: 100%;
+            height: 3px;
+            background: #1a2332;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7dd3fc, #818cf8);
+            animation: fillBar 1.2s ease forwards;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.15);
+        }
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: var(--target); }
+        }
+
+        /* ---------- TIMELINE (All 5 experiences) ---------- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        .timeline-item {
+            padding-left: 1.6rem;
+            border-left: 1.5px solid rgba(56, 189, 248, 0.12);
+            position: relative;
+            transition: 0.2s;
+            padding: 0.2rem 0 0.2rem 1.6rem;
+        }
+        .timeline-item:hover {
+            border-left-color: rgba(56, 189, 248, 0.4);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5.5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7dd3fc;
+            border: 2px solid #0a0e17;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+        .timeline-item .title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #f1f5f9;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .timeline-item .title .company {
+            color: #7dd3fc;
+            font-weight: 500;
+        }
+        .timeline-item .meta {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin: 2px 0 6px 0;
+            letter-spacing: 0.3px;
+        }
+        .timeline-item ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+        .timeline-item ul li {
+            padding: 2px 0 2px 22px;
+            position: relative;
+        }
+        .timeline-item ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #7dd3fc;
+            opacity: 0.5;
+        }
+        .project-tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.04);
+            color: #7dd3fc;
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.06);
+            margin-right: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---------- CERT BADGES ---------- */
+        .cert-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .cert-pill {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid #1e293b;
+            padding: 0.4rem 1.8rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            transition: 0.25s ease;
+            letter-spacing: 0.5px;
+            cursor: default;
+        }
+        .cert-pill:hover {
+            border-color: #7dd3fc;
+            background: rgba(56, 189, 248, 0.03);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+        .cert-pill .year {
+            color: #64748b;
+            font-weight: 400;
+            margin-left: 6px;
+            font-size: 0.7rem;
+        }
+
+        /* ---------- LANGUAGES ---------- */
+        .lang-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2.4rem;
+        }
+        .lang-list .lang {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+        .lang-list .lang strong {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+        .lang-list .lang .level {
+            color: #64748b;
+            font-size: 0.7rem;
+            margin-left: 6px;
+            font-weight: 400;
+        }
+
+        /* ---------- REFERENCE & FOOTER ---------- */
+        .ref-note {
+            color: #64748b;
+            font-size: 0.85rem;
+            border-left: 2px solid #1e293b;
+            padding-left: 1.2rem;
+            font-style: italic;
+        }
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            text-align: center;
+            font-size: 0.65rem;
+            color: #334155;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .footer-note span {
+            color: #7dd3fc;
+            opacity: 0.6;
+        }
+
+        /* ---------- SCROLLBAR ---------- */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0e17; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="name-title">
+            <h1>Fahmi Khemiri</h1>
+            <div class="sub"><strong>Cybersecurity Consultant</strong> &amp; <strong>Full Stack Developer</strong></div>
+            <div class="badge-cluster">
+                <span>OSCP</span>
+                <span>OSWE</span>
+                <span>CHFI</span>
+                <span>CEH</span>
+                <span class="core-badge">M.Sc KTH</span>
+            </div>
+        </div>
+        <div class="contact-links">
+            <a href="mailto:fahmi_khemiri@proton.me" class="email">✉️ fahmi_khemiri@proton.me</a>
+            <a href="#">🐞 HackerOne</a>
+            <a href="#">⚡ Bugcrowd</a>
+            <a href="#">📍 Malaysia</a>
+        </div>
+    </div>
+
+    <!-- ===== PROFILE + STATS ===== -->
+    <div class="profile-grid">
+        <div class="profile-text">
+            <p>
+                <strong>13+ years</strong> of offensive security experience - Red Team specialist
+                with proven enterprise engagements for <span class="highlight-company">Mercedes</span>,
+                <span class="highlight-company">Sony</span>,
+                <span class="highlight-company">ABB</span>, and
+                <span class="highlight-company">Nordia Bank</span>.
+                Coupled with full-stack development expertise across
+                <strong>Python, C#, C++, Ruby, Java, React Native, and Node.js</strong>.
+                Active contributor to global bug bounty programs, combining deep technical
+                reverse engineering with strategic risk management.
+            </p>
+        </div>
+        <div class="quick-stats">
+            <div class="stat"><span class="num">13+</span><span class="label">Years</span></div>
+            <div class="stat"><span class="num">5</span><span class="label">Languages</span></div>
+            <div class="stat"><span class="num num-gold">M.Sc</span><span class="label">KTH Stockholm</span></div>
+        </div>
+    </div>
+
+    <!-- ===== ALL SKILLS (Full CV competency table) ===== -->
+    <div class="section-title">⚙️ All Skills & Competencies</div>
+    <div class="skills-full-grid">
+        <div class="skill-cat">
+            <div class="cat-title">Offensive Security</div>
+            <div class="cat-items">
+                <span>Red Teaming</span> <span>Web Pentesting</span> <span>Network Pentesting</span>
+                <span>Wireless Pentesting</span> <span>Cloud Pentesting</span>
+                <span>Social Engineering</span> <span>Physical Security</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <div class="cat-title">Forensics &amp; IR</div>
+            <div class="cat-items">
+                <span>Malware Analysis</span> <span>Incident Investigations</span>
+                <span>Computer Hacking Forensics (CHFI)</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <div class="cat-title">Full Stack &amp; Development</div>
+            <div class="cat-items">
+                <span>Python</span> <span>C#</span> <span>C++</span> <span>Ruby</span>
+                <span>Perl</span> <span>Java</span> <span>React Native</span> <span>Node.js</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <div class="cat-title">Security Tools</div>
+            <div class="cat-items">
+                <span>Metasploit</span> <span>Burp Suite</span> <span>Wireshark</span>
+                <span>John the Ripper</span> <span>Cobalt Strike</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <div class="cat-title">Compliance &amp; Standards</div>
+            <div class="cat-items">
+                <span>GDPR</span> <span>PCI-DSS</span> <span>SCADA</span>
+                <span>HIPAA</span> <span>Banking Regulations</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <div class="cat-title">Operating Systems</div>
+            <div class="cat-items">
+                <span>Windows</span> <span>Unix</span> <span>Linux (Advanced)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CORE COMPETENCY BARS (includes Full Stack) ===== -->
+    <div class="section-title">⏤ Core Competency Levels</div>
+    <div class="skill-grid">
+        <div class="skill-item">
+            <div class="skill-label"><span>Offensive Security / Red Teaming</span><span class="perc">100%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:100%;"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label"><span>Full Stack &amp; Software Engineering</span><span class="perc">95%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:95%;"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label"><span>Reverse Engineering &amp; Exploit Dev</span><span class="perc">95%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:95%;"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label"><span>Web / Network / Cloud Pentesting</span><span class="perc">98%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:98%;"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label"><span>Forensics &amp; Incident Response</span><span class="perc">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:90%;"></div></div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label"><span>Social Engineering &amp; Physical</span><span class="perc">92%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--target:92%;"></div></div>
+        </div>
+    </div>
+
+    <!-- ===== ALL EXPERIENCES (Full 5 roles) ===== -->
+    <div class="section-title">⌨️ Experience</div>
+    <div class="timeline">
+
+        <!-- 1. TrueSec (2015-2022) -->
+        <div class="timeline-item">
+            <div class="title"><span>Penetration Testing, Cybersecurity Consulting &amp; Forensics</span> <span class="company">TrueSec</span></div>
+            <div class="meta">Stockholm, Sweden · Jan 2015 – Nov 2022 (7 years 11 months)</div>
+            <ul>
+                <li>Served as Red Team specialist while collaborating with the computer forensics team.</li>
+                <li>Led both blue and red teams  overseeing defensive operations and offensive penetration testing activities.</li>
+                <li>Managed 24/7 monitoring, incident investigations, and compliance for IoT, SCADA, healthcare, and banking systems.</li>
+                <li><span class="project-tag">Mercedes</span> Web application security assessment  discovered critical vulnerabilities.</li>
+                <li><span class="project-tag">Sony</span> Reverse engineering of products  identified firmware-level weaknesses.</li>
+                <li><span class="project-tag">ABB</span> SCADA vulnerability assessment  mitigated risks in industrial control environments.</li>
+                <li><span class="project-tag">Nordia Bank AB</span> Delivered social engineering awareness training and authored detailed security reports.</li>
+                <li>Proficient in network penetration testing, firewall implementation, and physical security tactics.</li>
+            </ul>
+        </div>
+
+        <!-- 2. Power Room AB (2013-2014) -->
+        <div class="timeline-item">
+            <div class="title"><span>Ethical Hacker</span> <span class="company">Power Room AB</span></div>
+            <div class="meta">Stockholm, Sweden · Oct 2013 – Sep 2014</div>
+            <ul>
+                <li>Led comprehensive penetration testing covering employees, IT infrastructure, and ownership.</li>
+                <li>Conducted internal/external tests, network assessments, and social engineering attacks.</li>
+                <li>Applied patches, delivered staff education, and produced detailed remediation reports.</li>
+            </ul>
+        </div>
+
+        <!-- 3. Open Flame Studio (2013) -->
+        <div class="timeline-item">
+            <div class="title"><span>Ethical Hacker – Reverse Engineering</span> <span class="company">Open Flame Studio</span></div>
+            <div class="meta">United Kingdom / Sweden · Apr 2013 – Aug 2013</div>
+            <ul>
+                <li>Specialized in reverse engineering applications within online photo galleries.</li>
+                <li>Identified vulnerabilities, conducted penetration tests, and fortified application security.</li>
+            </ul>
+        </div>
+
+        <!-- 4. Avantgarde (2011-2013) -->
+        <div class="timeline-item">
+            <div class="title"><span>Ethical Hacker (Red Team)</span> <span class="company">Avantgarde</span></div>
+            <div class="meta">Tunisia / United Arab Emirates · Mar 2011 – Feb 2013</div>
+            <ul>
+                <li>Executed red team exercises and security assessments to identify vulnerabilities.</li>
+                <li>Expertise in reporting, mitigation, and enhancing organizational defenses.</li>
+            </ul>
+        </div>
+
+        <!-- 5. Bug Bounty (2023-Present) -->
+        <div class="timeline-item">
+            <div class="title"><span>Bug Bounty Researcher</span> <span class="company">HackerOne · Bugcrowd</span></div>
+            <div class="meta">Remote · Apr 2023 – Present</div>
+            <ul>
+                <li>Actively identify and responsibly disclose vulnerabilities through bug bounty programs.</li>
+                <li>Continuously update skills to stay ahead of emerging threats and attack vectors.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <div class="section-title">🎓 Credentials</div>
+    <div class="cert-wrap">
+        <span class="cert-pill">OSCP <span class="year">2019</span></span>
+        <span class="cert-pill">OSWE <span class="year">2020</span></span>
+        <span class="cert-pill">CHFI <span class="year">2020</span></span>
+        <span class="cert-pill">CEH <span class="year">2019</span></span>
+        <span class="cert-pill" style="border-color:#818cf8; color:#a5b4fc;">M.Sc Engineering <span class="year">2016</span></span>
+    </div>
+
+    <!-- ===== LANGUAGES ===== -->
+    <div class="section-title">🌐 Languages</div>
+    <div class="lang-list">
+        <span class="lang"><strong>Arabic</strong> <span class="level">Native</span></span>
+        <span class="lang"><strong>English</strong> <span class="level">Fluent (C2)</span></span>
+        <span class="lang"><strong>Swedish</strong> <span class="level">Professional (B2)</span></span>
+        <span class="lang"><strong>French</strong> <span class="level">Intermediate</span></span>
+        <span class="lang"><strong>Italian</strong> <span class="level">Intermediate</span></span>
+    </div>
+
+    <!-- ===== REFERENCES ===== -->
+    <div class="section-title">🔒 References</div>
+    <div class="ref-note">
+        Professional references, case studies, and detailed project portfolios are available upon confidential request.
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer-note">
+        <span>⏤</span> Precision · Integrity · Impact <span>⏤</span>
+    </div>
+
+</div>
+
+</body>
+</html>
